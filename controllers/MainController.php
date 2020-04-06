@@ -90,11 +90,6 @@ class MainController
 		    //'Content-Type: application/json',
 		    //Если другой заголовок то POST будет пустой
 		    'Content-Type: multipart/form-data',
-		    //Authorization не передатся по умолчанию
-		   	//Если php настроен как модуль Apache 
-		   	//тогда нужно смотреть вот эти перепенные $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']
-		   	//Или проще указать в htaccess вот это RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-		   	//Тогда $_SERVER['HTTP_AUTHORIZATION'] будет видна
 		    'Authorization: '.$this->config['rest']['username'].':'.$this->config['rest']['pass'],
 		    'cache-control: no-cache',
 		    'X-HTTP-METHOD: POST' //Указываем наш метод GET|POST|PUT|DELETE
