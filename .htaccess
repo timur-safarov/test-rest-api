@@ -1,0 +1,13 @@
+DirectoryIndex index.php
+
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+RewriteEngine On
+
+#Следующие три строки указывают что модуль не должен работать, если папку или файл существуют
+Options +FollowSymlinks
+RewriteCond   %{REQUEST_FILENAME}       !-d
+RewriteCond   %{REQUEST_FILENAME}       !-f
+RewriteCond %{REQUEST_URI} !=/favicon.ico
+
+RewriteRule   ^(.*) index.php?%{QUERY_STRING}
