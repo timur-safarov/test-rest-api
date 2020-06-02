@@ -15,7 +15,7 @@ function __autoload($className) {
 $GLOBALS['config'] = include realpath('./config/common.php');
 
 try {
-    libraries\Db::getInstace();
+    libraries\Db::getInstance();
 }catch(PDOException $e){
     die($e->getMessage());
 }

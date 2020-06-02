@@ -15,6 +15,7 @@ class UserApi extends Api
 	public function Location_get()
 	{
 
+		//$this->method определяется в конструкторе parent класса
 		if ($this->method == 'GET') {
         	
             $this->run();

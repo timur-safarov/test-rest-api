@@ -30,7 +30,7 @@ class User extends Model
 
 		try {
 
-			parent::getInstace()->beginTransaction();
+			parent::getInstance()->beginTransaction();
 
 			$address = [
 				'region' => ($fields['region']) ? $fields['region'] : false,
@@ -42,7 +42,7 @@ class User extends Model
 
 			parent::pdoSave(Address::tableName(), $address);
 
-			$addressId = parent::getInstace()->lastInsertId();
+			$addressId = parent::getInstance()->lastInsertId();
 
 			$userData = [
 				'addressId' => $addressId,
@@ -60,11 +60,11 @@ class User extends Model
 			  Если хотя бы одна ошибка будет в одном из запросов 
 			  то commit не будет выполнен и передёт в блок catch
 		    */
-		    return parent::getInstace()->commit();
+		    return parent::getInstance()->commit();
 
 	    }catch (PDOException $e){
 
-		    parent::getInstace()->rollBack();
+		    parent::getInstance()->rollBack();
 
 		    return false;
 		    //echo $e->getMessage();
